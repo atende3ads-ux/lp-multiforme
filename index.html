@@ -60,7 +60,7 @@ section{padding:64px 0}
 .topo .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
 .topo img{height:34px;width:auto}
 .topo .btn{min-height:42px;padding:0 18px;font-size:14px}
-@media(max-width:560px){.topo .btn{display:none}}
+@media(max-width:899px){.topo .btn{display:none}}
 
 /* hero */
 .hero{padding:36px 0 48px;background:linear-gradient(180deg,#F4F7FA 0%,#fff 100%)}
@@ -85,6 +85,7 @@ section{padding:64px 0}
 /* produtos */
 .cat{margin-top:40px}
 .cat:first-of-type{margin-top:0}
+.cats-linha .cat:first-of-type{margin-top:40px}
 .cat h3{font-size:20px;font-weight:600;padding-bottom:12px;border-bottom:2px solid var(--tinta);margin-bottom:18px;display:flex;align-items:baseline;gap:10px}
 .cat h3 span{font-family:Inter,sans-serif;font-size:13px;font-weight:500;color:var(--texto);letter-spacing:0}
 .prods{display:grid;gap:14px;grid-template-columns:1fr}
@@ -96,12 +97,22 @@ section{padding:64px 0}
 @media(min-width:700px){
   .prods{grid-template-columns:repeat(2,1fr)}
 }
+@media(min-width:700px) and (max-width:999px){
+  .cats-linha{display:grid;grid-template-columns:1fr 1fr;column-gap:14px}
+  .cats-linha .cat:last-child{grid-column:span 2}
+  .cats-linha .prods{grid-template-columns:1fr}
+  .cats-linha .prods.c2{grid-template-columns:1fr 1fr}
+}
 @media(min-width:1000px){
   .prods{grid-template-columns:repeat(4,1fr)}
   .prod{grid-template-columns:1fr;padding:0;overflow:hidden;align-items:start;gap:0}
   .prod img,.prod .sem-foto{width:100%;height:auto;aspect-ratio:4/3;border-radius:0}
   .prod div.tx{padding:16px 18px 20px}
   .prods.c5{grid-template-columns:repeat(5,1fr)}
+  .cats-linha{display:grid;grid-template-columns:1fr 1fr 2fr;gap:14px;margin-top:40px}
+  .cats-linha .cat,.cats-linha .cat:first-of-type{margin-top:0}
+  .cats-linha .prods{grid-template-columns:1fr}
+  .cats-linha .prods.c2{grid-template-columns:1fr 1fr}
 }
 .destaque{margin-top:44px;background:var(--marinho);border-radius:var(--raio);padding:30px 24px;color:#C6D3E0;position:relative;overflow:hidden}
 .destaque::before{content:"";position:absolute;inset:0 auto 0 0;width:5px;background:linear-gradient(180deg,#4FA0F0,var(--prata))}
@@ -210,9 +221,8 @@ footer{background:#071D33;color:#9FB0C2;padding:40px 0;font-size:14.5px}
 @keyframes pulo{0%,100%{transform:translateY(0)}20%{transform:translateY(-12px)}40%{transform:translateY(0)}55%{transform:translateY(-5px)}70%{transform:translateY(0)}}
 @media(min-width:900px){
   body{padding-bottom:0}
-  .fixo{left:auto;right:24px;bottom:24px;padding:0;background:none;border:0}
-  .fixo .btn{width:auto;padding:0 26px 0 22px;box-shadow:0 10px 26px rgba(0,0,0,.22);border-radius:30px}
-  .flut{right:24px;bottom:96px}
+  .fixo{display:none}
+  .flut{right:24px;bottom:24px}
 }
 </style>
 </head>
@@ -293,6 +303,7 @@ footer{background:#071D33;color:#9FB0C2;padding:40px 0;font-size:14.5px}
       </div>
     </div>
 
+    <div class="cats-linha">
     <div class="cat">
       <h3>Refrigeração</h3>
       <div class="prods">
@@ -309,10 +320,12 @@ footer{background:#071D33;color:#9FB0C2;padding:40px 0;font-size:14.5px}
 
     <div class="cat">
       <h3>Arquitetura e acabamentos</h3>
-      <div class="prods">
+      <div class="prods c2">
         <article class="prod"><img src="img/corrimao.jpg" alt="Corrimão em inox" loading="lazy"><div class="tx"><h4>Corrimão em inox</h4><p>Aplicação para escadas, rampas e outros projetos.</p></div></article>
         <article class="prod"><img src="img/guarda-corpo.jpg" alt="Guarda-corpo em inox" loading="lazy"><div class="tx"><h4>Guarda-corpo em inox</h4><p>Aplicação em áreas que precisam de proteção e acabamento em inox.</p></div></article>
       </div>
+    </div>
+
     </div>
 
     <div class="destaque">
