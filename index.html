@@ -83,36 +83,36 @@ section{padding:64px 0}
 }
 
 /* produtos */
-.cat{margin-top:40px}
-.cat:first-of-type{margin-top:0}
-.cats-linha .cat:first-of-type{margin-top:40px}
-.cat h3{font-size:20px;font-weight:600;padding-bottom:12px;border-bottom:2px solid var(--tinta);margin-bottom:18px;display:flex;align-items:baseline;gap:10px}
-.cat h3 span{font-family:Inter,sans-serif;font-size:13px;font-weight:500;color:var(--texto);letter-spacing:0}
-.prods{display:grid;gap:14px;grid-template-columns:1fr}
-.prod{display:grid;grid-template-columns:104px 1fr;gap:16px;align-items:center;border:1px solid var(--linha);border-radius:var(--raio);padding:10px;background:#fff}
-.prod img,.prod .sem-foto{width:104px;height:104px;border-radius:9px;object-fit:cover}
-.prod h4{font-size:17px;font-weight:600;margin-bottom:4px}
-.prod p{font-size:14.5px;line-height:1.5}
-.sem-foto{display:flex;align-items:center;justify-content:center;text-align:center;background:repeating-linear-gradient(135deg,var(--prata-clara) 0 10px,#E4E9EE 10px 20px);color:#6B7885;font-size:11px;font-weight:600;line-height:1.3;padding:8px}
-@media(min-width:700px){
-  .prods{grid-template-columns:repeat(2,1fr)}
-}
-@media(min-width:700px) and (max-width:999px){
-  .cats-linha{display:grid;grid-template-columns:1fr 1fr;column-gap:14px}
-  .cats-linha .cat:last-child{grid-column:span 2}
-  .cats-linha .prods{grid-template-columns:1fr}
-  .cats-linha .prods.c2{grid-template-columns:1fr 1fr}
-}
-@media(min-width:1000px){
-  .prods{grid-template-columns:repeat(4,1fr)}
-  .prod{grid-template-columns:1fr;padding:0;overflow:hidden;align-items:start;gap:0}
-  .prod img,.prod .sem-foto{width:100%;height:auto;aspect-ratio:4/3;border-radius:0}
-  .prod div.tx{padding:16px 18px 20px}
-  .prods.c5{grid-template-columns:repeat(5,1fr)}
-  .cats-linha{display:grid;grid-template-columns:1fr 1fr 2fr;gap:14px;margin-top:40px}
-  .cats-linha .cat,.cats-linha .cat:first-of-type{margin-top:0}
-  .cats-linha .prods{grid-template-columns:1fr}
-  .cats-linha .prods.c2{grid-template-columns:1fr 1fr}
+.pc-tabs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:0 -20px;padding:2px 20px 14px}
+.pc-tabs::-webkit-scrollbar{display:none}
+.pc-tab{flex:none;font-family:Sora,sans-serif;font-size:14px;font-weight:600;color:var(--tinta);background:#fff;border:1px solid var(--linha);border-radius:999px;padding:10px 16px;cursor:pointer;white-space:nowrap}
+.pc-tab.on{background:var(--marinho);border-color:var(--marinho);color:#fff}
+.pc-painel{display:none}
+.pc-painel.on{display:grid;gap:16px}
+.pc-tit{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.pc-lista{display:flex;gap:8px;flex-wrap:wrap}
+.pc-item{font:inherit;font-size:14.5px;font-weight:500;color:var(--texto);background:var(--prata-clara);border:0;border-radius:8px;padding:9px 13px;cursor:pointer;text-align:left}
+.pc-item.on{background:#E6F0FB;color:var(--azul-forte);font-weight:600}
+.pc-prod{display:none;border:1px solid var(--linha);border-radius:var(--raio);overflow:hidden;background:#fff}
+.pc-prod.on{display:block}
+.pc-foto{aspect-ratio:4/3;background:var(--prata-clara)}
+.pc-foto img,.pc-foto .sem-foto{width:100%;height:100%;object-fit:cover}
+.pc-prod .tx{padding:20px}
+.pc-prod h4{font-size:20px;font-weight:600;margin-bottom:8px}
+.sem-foto{display:flex;align-items:center;justify-content:center;text-align:center;background:repeating-linear-gradient(135deg,var(--prata-clara) 0 10px,#E4E9EE 10px 20px);color:#6B7885;font-size:13px;font-weight:600;line-height:1.3;padding:8px}
+@media(min-width:900px){
+  .pc-tabs{margin:0 0 28px;padding:0;border-bottom:1px solid var(--linha);gap:0;overflow:visible}
+  .pc-tab{border:0;border-radius:0;background:none;padding:14px 20px;font-size:15px;color:var(--texto);border-bottom:3px solid transparent;margin-bottom:-1px}
+  .pc-tab.on{background:none;color:var(--tinta);border-bottom-color:var(--azul)}
+  .pc-painel.on{grid-template-columns:300px 1fr;gap:40px;align-items:start}
+  .pc-lista{flex-direction:column;flex-wrap:nowrap;gap:4px}
+  .pc-item{background:none;font-family:Sora,sans-serif;font-size:17px;font-weight:600;color:var(--texto);padding:14px 16px;border-radius:10px;border-left:3px solid transparent}
+  .pc-item.on{background:var(--prata-clara);color:var(--tinta);border-left-color:var(--azul)}
+  .pc-prod.on{display:grid;grid-template-columns:1.25fr 1fr;align-items:center}
+  .pc-foto{aspect-ratio:4/3}
+  .pc-prod .tx{padding:36px}
+  .pc-prod h4{font-size:24px}
+  .pc-prod p{font-size:16.5px}
 }
 .destaque{margin-top:44px;background:var(--marinho);border-radius:var(--raio);padding:30px 24px;color:#C6D3E0;position:relative;overflow:hidden}
 .destaque::before{content:"";position:absolute;inset:0 auto 0 0;width:5px;background:linear-gradient(180deg,#4FA0F0,var(--prata))}
@@ -315,52 +315,76 @@ footer{background:#071D33;color:#9FB0C2;padding:40px 0;font-size:14.5px}
       <p class="lead">A Multiforme fabrica equipamentos e peças em inox sob medida para cozinhas, áreas de preparo, refrigeração, transporte, organização e projetos arquitetônicos.</p>
     </div>
 
-    <div class="cat">
-      <h3>Pias, bancadas e cubas</h3>
-      <div class="prods">
-        <article class="prod"><img src="img/pia.jpg" alt="Pia inox" loading="lazy"><div class="tx"><h4>Pia inox</h4><p>Para cozinhas profissionais e áreas de lavagem e preparo.</p></div></article>
-        <article class="prod"><img src="img/bancada.jpg" alt="Bancada inox" loading="lazy"><div class="tx"><h4>Bancada inox</h4><p>Superfície de apoio para preparo, manipulação e organização.</p></div></article>
-        <article class="prod"><img src="img/bancada-cuba.jpg" alt="Bancada com cuba" loading="lazy"><div class="tx"><h4>Bancada com cuba</h4><p>Bancada em inox com cuba integrada para áreas de apoio e lavagem.</p></div></article>
-        <article class="prod"><img src="img/cuba.jpg" alt="Cuba industrial reforçada em inox" loading="lazy"><div class="tx"><h4>Cuba industrial reforçada em inox</h4><p>Cuba voltada ao uso em operações profissionais.</p></div></article>
+    <div class="pc">
+      <div class="pc-tabs" role="tablist" aria-label="Categorias de produtos">
+        <button type="button" role="tab" class="pc-tab on" aria-selected="true" data-cat="0">Pias, bancadas e cubas</button>
+        <button type="button" role="tab" class="pc-tab" aria-selected="false" data-cat="1">Cozinha industrial</button>
+        <button type="button" role="tab" class="pc-tab" aria-selected="false" data-cat="2">Refrigeração</button>
+        <button type="button" role="tab" class="pc-tab" aria-selected="false" data-cat="3">Transporte e organização</button>
+        <button type="button" role="tab" class="pc-tab" aria-selected="false" data-cat="4">Arquitetura e acabamentos</button>
+      </div>
+      <div class="pc-painel on" role="tabpanel" data-cat="0">
+        <h3 class="pc-tit">Pias, bancadas e cubas</h3>
+        <div class="pc-lista">
+          <button type="button" class="pc-item on" data-p="0">Pia inox</button>
+          <button type="button" class="pc-item" data-p="1">Bancada inox</button>
+          <button type="button" class="pc-item" data-p="2">Bancada com cuba</button>
+          <button type="button" class="pc-item" data-p="3">Cuba industrial reforçada em inox</button>
+        </div>
+        <div class="pc-det">
+          <article class="pc-prod on" data-p="0"><div class="pc-foto"><img src="img/pia.jpg" alt="Pia inox" loading="lazy"></div><div class="tx"><h4>Pia inox</h4><p>Para cozinhas profissionais e áreas de lavagem e preparo.</p></div></article>
+          <article class="pc-prod" data-p="1"><div class="pc-foto"><img src="img/bancada.jpg" alt="Bancada inox" loading="lazy"></div><div class="tx"><h4>Bancada inox</h4><p>Superfície de apoio para preparo, manipulação e organização.</p></div></article>
+          <article class="pc-prod" data-p="2"><div class="pc-foto"><img src="img/bancada-cuba.jpg" alt="Bancada com cuba" loading="lazy"></div><div class="tx"><h4>Bancada com cuba</h4><p>Bancada em inox com cuba integrada para áreas de apoio e lavagem.</p></div></article>
+          <article class="pc-prod" data-p="3"><div class="pc-foto"><img src="img/cuba.jpg" alt="Cuba industrial reforçada em inox" loading="lazy"></div><div class="tx"><h4>Cuba industrial reforçada em inox</h4><p>Cuba voltada ao uso em operações profissionais.</p></div></article>
+        </div>
+      </div>
+      <div class="pc-painel" role="tabpanel" data-cat="1">
+        <h3 class="pc-tit">Cozinha industrial</h3>
+        <div class="pc-lista">
+          <button type="button" class="pc-item on" data-p="0">Coifa</button>
+          <button type="button" class="pc-item" data-p="1">Fogão</button>
+          <button type="button" class="pc-item" data-p="2">Ilha de montagem</button>
+          <button type="button" class="pc-item" data-p="3">Mesa inox</button>
+          <button type="button" class="pc-item" data-p="4">Pista quente</button>
+        </div>
+        <div class="pc-det">
+          <article class="pc-prod on" data-p="0"><div class="pc-foto"><img src="img/coifa.jpg" alt="Coifa" loading="lazy"></div><div class="tx"><h4>Coifa</h4><p>Aplicação para cozinhas profissionais, churrasqueiras e áreas de cocção.</p></div></article>
+          <article class="pc-prod" data-p="1"><div class="pc-foto"><img src="img/fogao.jpg" alt="Fogão" loading="lazy"></div><div class="tx"><h4>Fogão</h4><p>Equipamento para a rotina de cozinhas profissionais.</p></div></article>
+          <article class="pc-prod" data-p="2"><div class="pc-foto"><img src="img/ilha.jpg" alt="Ilha de montagem" loading="lazy"></div><div class="tx"><h4>Ilha de montagem</h4><p>Área central de apoio para preparo e montagem.</p></div></article>
+          <article class="pc-prod" data-p="3"><div class="pc-foto"><img src="img/mesa.jpg" alt="Mesa inox" loading="lazy"></div><div class="tx"><h4>Mesa inox</h4><p>Superfície de trabalho para diferentes etapas da operação.</p></div></article>
+          <article class="pc-prod" data-p="4"><div class="pc-foto"><div class="sem-foto">[FOTO: pista quente]</div></div><div class="tx"><h4>Pista quente</h4><p>Equipamento para operações que precisam manter alimentos aquecidos durante o serviço.</p></div></article>
+        </div>
+      </div>
+      <div class="pc-painel" role="tabpanel" data-cat="2">
+        <h3 class="pc-tit">Refrigeração</h3>
+        <div class="pc-lista">
+          <button type="button" class="pc-item on" data-p="0">Balcão refrigerado</button>
+        </div>
+        <div class="pc-det">
+          <article class="pc-prod on" data-p="0"><div class="pc-foto"><img src="img/balcao.jpg" alt="Balcão refrigerado" loading="lazy"></div><div class="tx"><h4>Balcão refrigerado</h4><p>Equipamento para operações que precisam unir refrigeração e área de apoio.</p></div></article>
+        </div>
+      </div>
+      <div class="pc-painel" role="tabpanel" data-cat="3">
+        <h3 class="pc-tit">Transporte e organização</h3>
+        <div class="pc-lista">
+          <button type="button" class="pc-item on" data-p="0">Carrinho esqueleto</button>
+        </div>
+        <div class="pc-det">
+          <article class="pc-prod on" data-p="0"><div class="pc-foto"><img src="img/carrinho.jpg" alt="Carrinho esqueleto" loading="lazy"></div><div class="tx"><h4>Carrinho esqueleto</h4><p>Estrutura para movimentação e organização dentro da operação.</p></div></article>
+        </div>
+      </div>
+      <div class="pc-painel" role="tabpanel" data-cat="4">
+        <h3 class="pc-tit">Arquitetura e acabamentos</h3>
+        <div class="pc-lista">
+          <button type="button" class="pc-item on" data-p="0">Corrimão em inox</button>
+          <button type="button" class="pc-item" data-p="1">Guarda-corpo em inox</button>
+        </div>
+        <div class="pc-det">
+          <article class="pc-prod on" data-p="0"><div class="pc-foto"><img src="img/corrimao.jpg" alt="Corrimão em inox" loading="lazy"></div><div class="tx"><h4>Corrimão em inox</h4><p>Aplicação para escadas, rampas e outros projetos.</p></div></article>
+          <article class="pc-prod" data-p="1"><div class="pc-foto"><img src="img/guarda-corpo.jpg" alt="Guarda-corpo em inox" loading="lazy"></div><div class="tx"><h4>Guarda-corpo em inox</h4><p>Aplicação em áreas que precisam de proteção e acabamento em inox.</p></div></article>
+        </div>
       </div>
     </div>
-
-    <div class="cat">
-      <h3>Cozinha industrial</h3>
-      <div class="prods c5">
-        <article class="prod"><img src="img/coifa.jpg" alt="Coifa" loading="lazy"><div class="tx"><h4>Coifa</h4><p>Aplicação para cozinhas profissionais, churrasqueiras e áreas de cocção.</p></div></article>
-        <article class="prod"><img src="img/fogao.jpg" alt="Fogão" loading="lazy"><div class="tx"><h4>Fogão</h4><p>Equipamento para a rotina de cozinhas profissionais.</p></div></article>
-        <article class="prod"><img src="img/ilha.jpg" alt="Ilha de montagem" loading="lazy"><div class="tx"><h4>Ilha de montagem</h4><p>Área central de apoio para preparo e montagem.</p></div></article>
-        <article class="prod"><img src="img/mesa.jpg" alt="Mesa inox" loading="lazy"><div class="tx"><h4>Mesa inox</h4><p>Superfície de trabalho para diferentes etapas da operação.</p></div></article>
-        <article class="prod"><div class="sem-foto">[FOTO: pista quente]</div><div class="tx"><h4>Pista quente</h4><p>Equipamento para operações que precisam manter alimentos aquecidos durante o serviço.</p></div></article>
-      </div>
-    </div>
-
-    <div class="cats-linha">
-    <div class="cat">
-      <h3>Refrigeração</h3>
-      <div class="prods">
-        <article class="prod"><img src="img/balcao.jpg" alt="Balcão refrigerado" loading="lazy"><div class="tx"><h4>Balcão refrigerado</h4><p>Equipamento para operações que precisam unir refrigeração e área de apoio.</p></div></article>
-      </div>
-    </div>
-
-    <div class="cat">
-      <h3>Transporte e organização</h3>
-      <div class="prods">
-        <article class="prod"><img src="img/carrinho.jpg" alt="Carrinho esqueleto" loading="lazy"><div class="tx"><h4>Carrinho esqueleto</h4><p>Estrutura para movimentação e organização dentro da operação.</p></div></article>
-      </div>
-    </div>
-
-    <div class="cat">
-      <h3>Arquitetura e acabamentos</h3>
-      <div class="prods c2">
-        <article class="prod"><img src="img/corrimao.jpg" alt="Corrimão em inox" loading="lazy"><div class="tx"><h4>Corrimão em inox</h4><p>Aplicação para escadas, rampas e outros projetos.</p></div></article>
-        <article class="prod"><img src="img/guarda-corpo.jpg" alt="Guarda-corpo em inox" loading="lazy"><div class="tx"><h4>Guarda-corpo em inox</h4><p>Aplicação em áreas que precisam de proteção e acabamento em inox.</p></div></article>
-      </div>
-    </div>
-
-    </div>
-
   </div>
 </section>
 
@@ -591,6 +615,28 @@ document.querySelectorAll('.js-zap').forEach(function (a) {
   }
   ir();
   setInterval(function () { i = (i + 1) % n; ir(); }, 1600);
+})();
+
+// Produtos: abas por categoria e produto em destaque
+(function () {
+  var pc = document.querySelector('.pc');
+  function marca(lista, el) { lista.forEach(function (x) { x.classList.toggle('on', x === el); }); }
+  pc.querySelectorAll('.pc-tab').forEach(function (t) {
+    t.addEventListener('click', function () {
+      var tabs = pc.querySelectorAll('.pc-tab');
+      marca(tabs, t);
+      tabs.forEach(function (x) { x.setAttribute('aria-selected', x === t ? 'true' : 'false'); });
+      pc.querySelectorAll('.pc-painel').forEach(function (p) { p.classList.toggle('on', p.dataset.cat === t.dataset.cat); });
+    });
+  });
+  pc.querySelectorAll('.pc-painel').forEach(function (p) {
+    p.querySelectorAll('.pc-item').forEach(function (b) {
+      b.addEventListener('click', function () {
+        marca(p.querySelectorAll('.pc-item'), b);
+        p.querySelectorAll('.pc-prod').forEach(function (d) { d.classList.toggle('on', d.dataset.p === b.dataset.p); });
+      });
+    });
+  });
 })();
 
 // Carrossel de avaliações do Google
