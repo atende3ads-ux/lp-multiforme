@@ -136,13 +136,11 @@ section[id]{scroll-margin-top:90px}
 .sobmedida h2{color:#fff}
 .sobmedida .lead{max-width:760px}
 .sm-grid{display:grid;gap:36px;align-items:center}
-.sm-foto{position:relative;margin:0 14px 14px 0;max-width:420px}
-.sm-foto::before{content:"";position:absolute;inset:14px -14px -14px 14px;border:2px solid #4FA0F0;border-radius:var(--raio)}
-.sm-foto img{position:relative;width:100%;aspect-ratio:1/1;object-fit:cover;object-position:center 12%;border-radius:var(--raio)}
+.sm-foto{margin:0;max-width:380px}
+.sm-foto img{width:100%;height:auto}
 @media(min-width:900px){
-  .sm-grid{grid-template-columns:1.25fr .75fr;gap:72px}
-  .sm-foto{justify-self:end;width:100%;max-width:340px}
-  .sm-foto img{aspect-ratio:4/5}
+  .sm-grid{grid-template-columns:1.2fr .8fr;gap:72px}
+  .sm-foto{justify-self:end;width:100%;max-width:400px}
 }
 
 /* segmentos */
@@ -411,7 +409,7 @@ footer{background:#071D33;color:#9FB0C2;padding:40px 0;font-size:14.5px}
     <p class="lead">Os equipamentos são fabricados conforme as medidas e necessidades de cada projeto. A Multiforme também faz a instalação completa no local, deixando o equipamento instalado conforme o que foi definido para a operação.</p>
     <div class="cta"><a class="btn js-zap" href="#"><svg><use href="#zap"/></svg>Pedir cotação</a></div>
     </div>
-    <figure class="sm-foto"><img src="img/equipe.jpg" alt="Equipe da Multiforme Inox na fábrica" width="430" height="784" loading="lazy"></figure>
+    <figure class="sm-foto"><img src="img/equipe.png" alt="Equipe da Multiforme Inox medindo uma chapa de inox na fábrica" width="431" height="500" loading="lazy"></figure>
   </div>
 </section>
 
