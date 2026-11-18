@@ -67,30 +67,30 @@ section[id]{scroll-margin-top:90px}
 .topo .btn{min-height:46px;font-size:14.5px}
 @media(max-width:899px){.topo .btn{display:none}.topo .nav{justify-content:center;padding:4px 16px}}
 
-/* hero: mídia (carrossel) atrás, texto sobre fundo escuro */
-.hero{--midia:300px;position:relative;overflow:hidden;padding:calc(var(--midia) + 4px) 0 52px;background:#07192D;color:#fff}
-.car{position:absolute;inset:0 0 auto;height:var(--midia);z-index:0;overflow:hidden;background:var(--marinho)}
-.car-faixa{display:flex;height:100%;transition:transform .35s ease}
-.car figure{position:relative;flex:0 0 100%;margin:0;height:100%}
-.car img{width:100%;height:100%;object-fit:cover}
-.car figcaption{position:absolute;right:16px;bottom:34px;z-index:3;padding:6px 12px;border-radius:999px;background:rgba(7,25,45,.78);color:#fff;font-weight:700;font-size:13px}
-.hero::after{content:"";position:absolute;inset:0 0 auto;height:var(--midia);z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(7,25,45,.6),transparent 34%,transparent 62%,#07192D)}
-.hero .wrap{position:relative;z-index:2}
+/* hero: fundo azul, texto à esquerda e composição de 3 imagens à direita */
+.hero{position:relative;overflow:hidden;padding:104px 0 52px;background:radial-gradient(120% 90% at 85% 10%,#12406E 0%,#0B2A4A 45%,#07192D 100%);color:#fff}
+.hero-grid{display:grid;gap:36px;align-items:center}
 .hero-copy{max-width:620px}
 .hero-label{display:inline-flex;align-items:center;gap:.6rem;margin-bottom:1.1rem;color:#7DB9F5;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
 .hero-label::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor;box-shadow:0 0 0 6px rgba(125,185,245,.18)}
 .hero h1{color:#fff;font-size:clamp(27px,7.6vw,34px);letter-spacing:-.04em;margin-bottom:1rem}
 .hero h1 em{font-style:normal;color:#7DB9F5}
 .hero h2{font-size:clamp(16px,4vw,18px);font-weight:400;line-height:1.55;letter-spacing:0;color:rgba(255,255,255,.86);margin:0 0 1.6rem}
-.car-pts{display:none}
-@media(min-width:621px){.hero{--midia:clamp(340px,60vw,460px)}}
+.trio{position:relative;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1.35fr 1fr;gap:12px;height:330px}
+.trio::before{content:"";position:absolute;inset:-16px -16px auto auto;width:44%;height:40%;border:2px solid rgba(125,185,245,.45);border-radius:var(--raio);z-index:0}
+.trio::after{content:"";position:absolute;left:-16px;bottom:-16px;width:30%;height:26%;border-radius:var(--raio);background:var(--azul);opacity:.55;z-index:0}
+.trio figure{position:relative;z-index:1;margin:0;border-radius:var(--raio);overflow:hidden;background:var(--marinho-2);box-shadow:0 18px 40px rgba(0,0,0,.35)}
+.trio figure:first-child{grid-column:span 2}
+.trio img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .3s}
+.trio img.sai{opacity:0}
+.trio figcaption{position:absolute;left:10px;bottom:10px;z-index:2;padding:5px 11px;border-radius:999px;background:rgba(7,25,45,.82);color:#fff;font-weight:700;font-size:12.5px}
+@media(min-width:621px){.trio{height:400px}}
 @media(min-width:900px){
-  .hero{--midia:100%;display:flex;align-items:center;min-height:min(88svh,760px);padding:130px 0 72px}
-  .car{inset:0 0 0 42%;height:100%}
-  .hero::after{inset:0;height:100%;background:linear-gradient(90deg,#07192D 0%,#07192D 42%,rgba(7,25,45,.72) 54%,rgba(7,25,45,.08) 78%),linear-gradient(0deg,rgba(7,25,45,.5),transparent 40%)}
-  .hero-copy{max-width:600px}
+  .hero{padding:150px 0 96px}
+  .hero-grid{grid-template-columns:1.05fr .95fr;gap:64px}
   .hero h1{font-size:clamp(34px,3.3vw,42px)}
-  .car figcaption{right:5%;bottom:40px;font-size:14px}
+  .trio{height:520px;gap:16px}
+  .trio figcaption{left:14px;bottom:14px;font-size:13.5px}
 }
 
 /* produtos */
@@ -305,31 +305,20 @@ footer{background:#071D33;color:#9FB0C2;padding:40px 0;font-size:14.5px}
 
 <!-- DOBRA PRINCIPAL -->
 <section class="hero">
-  <!-- Carrossel automático e rápido, na ordem de prioridade da copy -->
-  <div class="car" aria-label="Produtos Multiforme Inox">
-    <div class="car-faixa" id="carFaixa">
-          <figure><img src="img/pia.jpg" alt="Pia em inox"><figcaption>Pia</figcaption></figure>
-          <figure><img src="img/bancada.jpg" alt="Bancada em inox" loading="lazy"><figcaption>Bancada</figcaption></figure>
-          <figure><img src="img/coifa.jpg" alt="Coifa em inox" loading="lazy"><figcaption>Coifa</figcaption></figure>
-          <figure><img src="img/fogao.jpg" alt="Fogão em inox" loading="lazy"><figcaption>Fogão</figcaption></figure>
-          <figure><img src="img/ilha.jpg" alt="Ilha de montagem em inox" loading="lazy"><figcaption>Ilha de montagem</figcaption></figure>
-          <figure><img src="img/bancada-cuba.jpg" alt="Bancada com cuba em inox" loading="lazy"><figcaption>Bancada com cuba</figcaption></figure>
-          <figure><img src="img/carrinho.jpg" alt="Carrinho esqueleto em inox" loading="lazy"><figcaption>Carrinho esqueleto</figcaption></figure>
-          <figure><img src="img/corrimao.jpg" alt="Corrimão em inox" loading="lazy"><figcaption>Corrimão</figcaption></figure>
-          <figure><img src="img/guarda-corpo.jpg" alt="Guarda-corpo em inox" loading="lazy"><figcaption>Guarda-corpo</figcaption></figure>
-          <figure><img src="img/mesa.jpg" alt="Mesa em inox" loading="lazy"><figcaption>Mesa</figcaption></figure>
-          <figure><img src="img/balcao.jpg" alt="Balcão refrigerado em inox" loading="lazy"><figcaption>Balcão refrigerado</figcaption></figure>
-          <figure><img src="img/cuba.jpg" alt="Cuba industrial reforçada em inox" loading="lazy"><figcaption>Cuba industrial reforçada em inox</figcaption></figure>
-          <figure><div class="sem-foto" style="width:100%;height:100%;font-size:14px">[FOTO: pista quente]</div><figcaption>Pista quente</figcaption></figure>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="hero-label">Multiforme Inox | Goiânia</p>
+      <h1>Chega de adaptar a sua operação ao equipamento. <em>Fabricamos em inox na medida certa para o seu espaço</em></h1>
+      <h2>Coifas, fogões, pias, bancadas, ilhas de montagem e balcões em inox, projetados e fabricados no modelo e na medida que o seu projeto precisa.</h2>
+      <a class="btn js-zap" href="#"><svg><use href="#zap"/></svg>Pedir cotação</a>
+    </div>
+    <!-- Carrossel automático e rápido: 3 quadros que alternam os produtos na ordem de prioridade da copy -->
+    <div class="trio" id="trio" aria-label="Produtos Multiforme Inox">
+      <figure><img src="img/pia.jpg" alt="Pia em inox"><figcaption>Pia</figcaption></figure>
+      <figure><img src="img/bancada.jpg" alt="Bancada em inox"><figcaption>Bancada</figcaption></figure>
+      <figure><img src="img/coifa.jpg" alt="Coifa em inox"><figcaption>Coifa</figcaption></figure>
     </div>
   </div>
-  <div class="wrap"><div class="hero-copy">
-    <p class="hero-label">Multiforme Inox | Goiânia</p>
-    <h1>Chega de adaptar a sua operação ao equipamento. <em>Fabricamos em inox na medida certa para o seu espaço</em></h1>
-    <h2>Coifas, fogões, pias, bancadas, ilhas de montagem e balcões em inox, projetados e fabricados no modelo e na medida que o seu projeto precisa.</h2>
-    <a class="btn js-zap" href="#"><svg><use href="#zap"/></svg>Pedir cotação</a>
-  </div></div>
-  <div class="car-pts" id="carPts" aria-hidden="true"></div>
 </section>
 
 <!-- SEÇÃO 02 -->
@@ -638,17 +627,33 @@ document.querySelectorAll('.js-zap').forEach(function (a) {
   a.href = TINTIM; a.target = '_blank'; a.rel = 'noopener';
 });
 
-// Carrossel automático e rápido
+// Carrossel automático e rápido da dobra: 3 quadros alternando os produtos
 (function () {
-  var faixa = document.getElementById('carFaixa'), pts = document.getElementById('carPts');
-  var n = faixa.children.length, i = 0;
-  for (var k = 0; k < n; k++) pts.appendChild(document.createElement('i'));
-  function ir() {
-    faixa.style.transform = 'translateX(' + (-100 * i) + '%)';
-    for (var k = 0; k < n; k++) pts.children[k].className = k === i ? 'on' : '';
-  }
-  ir();
-  setInterval(function () { i = (i + 1) % n; ir(); }, 1600);
+  var P = [
+    ['img/pia.jpg', 'Pia em inox', 'Pia'],
+    ['img/bancada.jpg', 'Bancada em inox', 'Bancada'],
+    ['img/coifa.jpg', 'Coifa em inox', 'Coifa'],
+    ['img/fogao.jpg', 'Fogão em inox', 'Fogão'],
+    ['img/ilha.jpg', 'Ilha de montagem em inox', 'Ilha de montagem'],
+    ['img/bancada-cuba.jpg', 'Bancada com cuba em inox', 'Bancada com cuba'],
+    ['img/carrinho.jpg', 'Carrinho esqueleto em inox', 'Carrinho esqueleto'],
+    ['img/corrimao.jpg', 'Corrimão em inox', 'Corrimão'],
+    ['img/guarda-corpo.jpg', 'Guarda-corpo em inox', 'Guarda-corpo'],
+    ['img/mesa.jpg', 'Mesa em inox', 'Mesa'],
+    ['img/balcao.jpg', 'Balcão refrigerado em inox', 'Balcão refrigerado'],
+    ['img/cuba.jpg', 'Cuba industrial reforçada em inox', 'Cuba industrial reforçada em inox']
+  ];
+  var quadros = document.querySelectorAll('#trio figure'), prox = quadros.length, vez = 0;
+  P.forEach(function (p) { new Image().src = p[0]; });
+  setInterval(function () {
+    var q = quadros[vez], img = q.querySelector('img'), p = P[prox];
+    img.classList.add('sai');
+    setTimeout(function () {
+      img.src = p[0]; img.alt = p[1]; q.querySelector('figcaption').textContent = p[2];
+      img.classList.remove('sai');
+    }, 300);
+    prox = (prox + 1) % P.length; vez = (vez + 1) % quadros.length;
+  }, 1400);
 })();
 
 // Produtos: abas por categoria e produto em destaque
