@@ -126,14 +126,27 @@ section{padding:64px 0}
 
 /* segmentos */
 .fundo-cinza{background:var(--prata-clara)}
-.segs{display:grid;gap:14px}
-.seg{background:#fff;border-radius:var(--raio);padding:22px;border:1px solid var(--linha)}
-.seg .ic{width:42px;height:42px;border-radius:10px;background:#E6F0FB;color:var(--azul);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
-.seg .ic svg{width:22px;height:22px}
-.seg h3{font-size:18px;font-weight:600;margin-bottom:8px}
-.seg p{font-size:15px}
-@media(min-width:700px){.segs{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:1000px){.segs{grid-template-columns:repeat(4,1fr)}.seg.larga{grid-column:span 2}}
+.seg-grid{display:grid;gap:28px}
+.seg-lista{background:#fff;border:1px solid var(--linha);border-radius:var(--raio);padding:0 20px}
+.seg{border-top:1px solid var(--linha)}
+.seg:first-child{border-top:0}
+.seg summary{display:flex;align-items:center;gap:14px;padding:16px 0;cursor:pointer;list-style:none}
+.seg summary::-webkit-details-marker{display:none}
+.seg .ic{width:38px;height:38px;border-radius:9px;background:#E6F0FB;color:var(--azul);display:flex;align-items:center;justify-content:center;flex:none}
+.seg .ic svg{width:20px;height:20px}
+.seg h3{font-size:16.5px;font-weight:600;flex:1}
+.seg .mais{position:relative;width:14px;height:14px;flex:none}
+.seg .mais::before,.seg .mais::after{content:"";position:absolute;left:0;top:6px;width:14px;height:2px;background:var(--azul);border-radius:1px}
+.seg .mais::after{transform:rotate(90deg)}
+.seg[open] .mais::after{display:none}
+.seg p{font-size:15px;padding:0 0 18px 52px}
+.so-desk{display:none}
+.seg-grid>.so-mob{margin-top:0}
+@media(min-width:900px){
+  .seg-grid{grid-template-columns:.9fr 1.1fr;gap:64px;align-items:start}
+  .seg-cab{position:sticky;top:96px}
+  .so-desk{display:block}.so-mob{display:none}
+}
 
 /* instalação */
 .inst{background:var(--marinho);color:#C6D3E0;padding:0}
@@ -205,10 +218,10 @@ section{padding:64px 0}
 .fone .barra{background:#075E54;color:#fff;padding:44px 14px 10px;font-size:12.5px;font-weight:600}
 .fone .corpo{flex:1;display:flex;align-items:center;justify-content:center;text-align:center;padding:18px;font-size:12px;font-weight:600;color:#6B7885;line-height:1.4}
 @media(min-width:800px){.zaps{justify-content:center;overflow:visible;margin:0;padding:4px 0 14px}}
-.desde{margin-top:48px;display:grid;gap:18px;align-items:center;border-top:1px solid var(--linha);padding-top:36px}
-.desde .ano{font-family:Sora,sans-serif;font-weight:700;font-size:52px;line-height:.9;color:var(--azul);letter-spacing:-.04em}
-.desde h3{font-size:20px;font-weight:700;margin-bottom:8px}
-@media(min-width:800px){.desde{grid-template-columns:auto 1fr;gap:36px}.desde .ano{font-size:68px}}
+.desde{display:grid;gap:20px;align-items:center}
+.desde .ano{font-family:Sora,sans-serif;font-weight:700;font-size:72px;line-height:.9;color:var(--azul);letter-spacing:-.04em}
+.desde .cta{margin-top:28px}
+@media(min-width:800px){.desde{grid-template-columns:auto 1fr;gap:56px}.desde .ano{font-size:120px}}
 .bloco{margin-top:48px}
 
 /* formulário */
@@ -362,50 +375,44 @@ footer{background:#071D33;color:#9FB0C2;padding:40px 0;font-size:14.5px}
 
 <!-- SEÇÃO 03 -->
 <section class="fundo-cinza" id="segmentos">
-  <div class="wrap">
-    <div class="cab">
+  <div class="wrap seg-grid">
+    <div class="seg-cab">
       <span class="selo">Onde a Multiforme atua</span>
       <h2 class="h2">Do restaurante à área gourmet, o projeto começa pelas medidas do espaço</h2>
       <p class="lead">A Multiforme atende principalmente operações comerciais e industriais, mas também desenvolve projetos residenciais e de alto padrão.</p>
+      <div class="cta so-desk"><a class="btn js-zap" href="#"><svg><use href="#zap"/></svg>Quero cotar meu projeto</a></div>
     </div>
-    <div class="segs">
-      <article class="seg larga">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v8a2 2 0 0 0 2 2v8M10 3v8a2 2 0 0 1-2 2M8 3v6M17 21v-7h-3V8a5 5 0 0 1 3-5v18Z"/></svg></div>
-        <h3>Restaurantes e cozinhas profissionais</h3>
+    <div class="seg-lista">
+      <details class="seg" name="seg" open>
+        <summary><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v8a2 2 0 0 0 2 2v8M10 3v8a2 2 0 0 1-2 2M8 3v6M17 21v-7h-3V8a5 5 0 0 1 3-5v18Z"/></svg></span><h3>Restaurantes e cozinhas profissionais</h3><span class="mais" aria-hidden="true"></span></summary>
         <p>Pias, bancadas, coifas, fogões, mesas, ilhas de montagem, pistas quentes e outros equipamentos dimensionados para a operação.</p>
-      </article>
-      <article class="seg larga">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V10l6 4v-4l6 4V4h5v17H3ZM7 17h2M12 17h2M17 17h1"/></svg></div>
-        <h3>Indústria alimentícia e projetos industriais</h3>
+      </details>
+      <details class="seg" name="seg">
+        <summary><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V10l6 4v-4l6 4V4h5v17H3ZM7 17h2M12 17h2M17 17h1"/></svg></span><h3>Indústria alimentícia e projetos industriais</h3><span class="mais" aria-hidden="true"></span></summary>
         <p>Equipamentos e estruturas em inox conforme a aplicação, o espaço e a necessidade do projeto.</p>
-      </article>
-      <article class="seg">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2l2.4 11h10.2L20 7H6.2"/><circle cx="9" cy="19" r="1.4"/><circle cx="17" cy="19" r="1.4"/></svg></div>
-        <h3>Supermercados e varejo</h3>
+      </details>
+      <details class="seg" name="seg">
+        <summary><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2l2.4 11h10.2L20 7H6.2"/><circle cx="9" cy="19" r="1.4"/><circle cx="17" cy="19" r="1.4"/></svg></span><h3>Supermercados e varejo</h3><span class="mais" aria-hidden="true"></span></summary>
         <p>Produtos para áreas de preparo, apoio, produção e operação.</p>
-      </article>
-      <article class="seg">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V6l8-3v18M12 9h8v12M3 21h18M7.5 9v.01M7.5 13v.01M7.5 17v.01M16 13v.01M16 17v.01"/></svg></div>
-        <h3>Construção civil</h3>
+      </details>
+      <details class="seg" name="seg">
+        <summary><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V6l8-3v18M12 9h8v12M3 21h18M7.5 9v.01M7.5 13v.01M7.5 17v.01M16 13v.01M16 17v.01"/></svg></span><h3>Construção civil</h3><span class="mais" aria-hidden="true"></span></summary>
         <p>Corrimãos, guarda-corpos e outras aplicações em inox para projetos comerciais e residenciais.</p>
-      </article>
-      <article class="seg">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M12 8v8M8 12h8"/></svg></div>
-        <h3>Saúde</h3>
+      </details>
+      <details class="seg" name="seg">
+        <summary><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M12 8v8M8 12h8"/></svg></span><h3>Saúde</h3><span class="mais" aria-hidden="true"></span></summary>
         <p>Peças e equipamentos em inox para projetos e ambientes do setor.</p>
-      </article>
-      <article class="seg">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4h9v17M14 9h5v12M3 21h18M8.5 8h2M8.5 12h2M8.5 16h2"/></svg></div>
-        <h3>Condomínios e projetos de alto padrão</h3>
+      </details>
+      <details class="seg" name="seg">
+        <summary><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4h9v17M14 9h5v12M3 21h18M8.5 8h2M8.5 12h2M8.5 16h2"/></svg></span><h3>Condomínios e projetos de alto padrão</h3><span class="mais" aria-hidden="true"></span></summary>
         <p>Soluções em inox para áreas comuns, espaços gourmet, churrasqueiras, corrimãos, guarda-corpos e outros projetos sob medida.</p>
-      </article>
-      <article class="seg larga">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5M5.5 10v10h13V10M10 20v-6h4v6"/></svg></div>
-        <h3>Casas e áreas gourmet</h3>
+      </details>
+      <details class="seg" name="seg">
+        <summary><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5M5.5 10v10h13V10M10 20v-6h4v6"/></svg></span><h3>Casas e áreas gourmet</h3><span class="mais" aria-hidden="true"></span></summary>
         <p>Coifas para churrasqueira, bancadas, pias, corrimãos, guarda-corpos e outras peças fabricadas para o espaço disponível.</p>
-      </article>
+      </details>
     </div>
-    <div class="cta"><a class="btn js-zap" href="#"><svg><use href="#zap"/></svg>Quero cotar meu projeto</a></div>
+    <div class="cta so-mob"><a class="btn js-zap" href="#"><svg><use href="#zap"/></svg>Quero cotar meu projeto</a></div>
   </div>
 </section>
 
@@ -515,15 +522,18 @@ footer{background:#071D33;color:#9FB0C2;padding:40px 0;font-size:14.5px}
       </div>
     </div>
 
-    <div class="desde">
-      <div class="ano">2019</div>
-      <div>
-        <h3>Desde 2019 trabalhando com inox</h3>
-        <p>A Multiforme desenvolve e comercializa produtos em aço inox para diferentes tipos de projeto desde 2019.</p>
-      </div>
-    </div>
+  </div>
+</section>
 
-    <div class="cta"><a class="btn js-zap" href="#"><svg><use href="#zap"/></svg>Falar com a Multiforme</a></div>
+<!-- DESDE 2019 (seção própria) -->
+<section class="fundo-cinza" id="desde-2019">
+  <div class="wrap desde">
+    <div class="ano" aria-hidden="true">2019</div>
+    <div>
+      <h2 class="h2">Desde 2019 trabalhando com inox</h2>
+      <p class="lead">A Multiforme desenvolve e comercializa produtos em aço inox para diferentes tipos de projeto desde 2019.</p>
+      <div class="cta"><a class="btn js-zap" href="#"><svg><use href="#zap"/></svg>Falar com a Multiforme</a></div>
+    </div>
   </div>
 </section>
 
