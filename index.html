@@ -135,6 +135,15 @@ section[id]{scroll-margin-top:90px}
 .sobmedida{background:var(--marinho);color:#C6D3E0;border-top:4px solid var(--azul)}
 .sobmedida h2{color:#fff}
 .sobmedida .lead{max-width:760px}
+.sm-grid{display:grid;gap:36px;align-items:center}
+.sm-foto{position:relative;margin:0 14px 14px 0;max-width:420px}
+.sm-foto::before{content:"";position:absolute;inset:14px -14px -14px 14px;border:2px solid #4FA0F0;border-radius:var(--raio)}
+.sm-foto img{position:relative;width:100%;aspect-ratio:1/1;object-fit:cover;object-position:center 12%;border-radius:var(--raio)}
+@media(min-width:900px){
+  .sm-grid{grid-template-columns:1.25fr .75fr;gap:72px}
+  .sm-foto{justify-self:end;width:100%;max-width:340px}
+  .sm-foto img{aspect-ratio:4/5}
+}
 
 /* segmentos */
 .fundo-cinza{background:var(--prata-clara)}
@@ -186,14 +195,26 @@ section[id]{scroll-margin-top:90px}
 }
 
 /* galeria */
-.gal{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-.gal figure{position:relative;margin:0;border-radius:12px;overflow:hidden;aspect-ratio:1/1;background:var(--prata-clara)}
-.gal img{width:100%;height:100%;object-fit:cover}
-.gal figcaption{position:absolute;left:0;right:0;bottom:0;padding:30px 12px 10px;background:linear-gradient(180deg,transparent,rgba(6,22,40,.82));color:#fff;font-size:13.5px;font-weight:600;line-height:1.25}
-.gal .sem-foto{width:100%;height:100%;font-size:12px}
-.gal .vazio figcaption{background:none;color:var(--tinta)}
-@media(min-width:700px){.gal{grid-template-columns:repeat(4,1fr);gap:14px}.gal figcaption{font-size:15px}}
-@media(min-width:1000px){.gal{grid-template-columns:repeat(5,1fr)}.gal figure:nth-child(-n+2){grid-column:span 2;aspect-ratio:2/1}}
+.centro{text-align:center}
+.cab.centro .selo{justify-content:center}
+.gv{max-width:920px;margin:0 auto}
+.gv-palco{position:relative;border-radius:var(--raio);overflow:hidden;background:var(--marinho);aspect-ratio:4/3}
+.gv-slide{display:none;margin:0;height:100%;position:relative}
+.gv-slide.on{display:block}
+.gv-slide img,.gv-slide .sem-foto{width:100%;height:100%;object-fit:cover}
+.gv-slide figcaption{position:absolute;left:0;right:0;bottom:0;padding:48px 20px 18px;background:linear-gradient(180deg,transparent,rgba(6,22,40,.85));color:#fff;font-weight:700;font-size:18px}
+.gv-seta{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:50%;border:0;background:rgba(255,255,255,.92);color:var(--tinta);font-size:26px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0 0 3px;box-shadow:0 2px 10px rgba(0,0,0,.2)}
+#gvAnt{left:12px}#gvProx{right:12px}
+.gv-minis{display:flex;gap:8px;margin-top:10px;overflow-x:auto;scrollbar-width:none;padding:2px}
+.gv-minis::-webkit-scrollbar{display:none}
+.gv-mini{flex:0 0 72px;height:56px;padding:0;border:0;border-radius:10px;overflow:hidden;cursor:pointer;opacity:.55;background:var(--prata-clara);outline:2px solid transparent;outline-offset:-2px}
+.gv-mini.on{opacity:1;outline-color:var(--azul)}
+.gv-mini img,.gv-mini .sem-foto{width:100%;height:100%;object-fit:cover;font-size:0;padding:0}
+@media(min-width:800px){
+  .gv-palco{aspect-ratio:16/10}
+  .gv-slide figcaption{font-size:22px;padding:60px 28px 22px}
+  .gv-mini{flex:1 1 0;min-width:0;height:60px}
+}
 
 /* depoimentos */
 .sub{font-size:19px;font-weight:600;margin:0 0 18px;display:flex;align-items:center;gap:10px}
@@ -229,10 +250,9 @@ section[id]{scroll-margin-top:90px}
 .fone .barra{background:#075E54;color:#fff;padding:44px 14px 10px;font-size:12.5px;font-weight:600}
 .fone .corpo{flex:1;display:flex;align-items:center;justify-content:center;text-align:center;padding:18px;font-size:12px;font-weight:600;color:#6B7885;line-height:1.4}
 @media(min-width:800px){.zaps{justify-content:center;overflow:visible;margin:0;padding:4px 0 14px}}
-.desde{display:grid;gap:20px;align-items:center}
-.desde .ano{font-weight:700;font-size:72px;line-height:.9;color:var(--azul);letter-spacing:-.04em}
+.desde{text-align:center}
+.desde .lead{margin-left:auto;margin-right:auto;max-width:560px}
 .desde .cta{margin-top:28px}
-@media(min-width:800px){.desde{grid-template-columns:auto 1fr;gap:56px}.desde .ano{font-size:120px}}
 .bloco{margin-top:48px}
 
 /* formulário */
@@ -396,10 +416,13 @@ footer{background:#071D33;color:#9FB0C2;padding:40px 0;font-size:14.5px}
 
 <!-- 100% SOB MEDIDA (seção própria) -->
 <section class="sobmedida">
-  <div class="wrap">
+  <div class="wrap sm-grid">
+    <div>
     <h2 class="h2">100% sob medida, com instalação no local</h2>
     <p class="lead">Os equipamentos são fabricados conforme as medidas e necessidades de cada projeto. A Multiforme também faz a instalação completa no local, deixando o equipamento instalado conforme o que foi definido para a operação.</p>
     <div class="cta"><a class="btn js-zap" href="#"><svg><use href="#zap"/></svg>Pedir cotação</a></div>
+    </div>
+    <figure class="sm-foto"><img src="img/equipe.jpg" alt="Equipe da Multiforme Inox na fábrica" width="430" height="784" loading="lazy"></figure>
   </div>
 </section>
 
@@ -480,26 +503,45 @@ footer{background:#071D33;color:#9FB0C2;padding:40px 0;font-size:14.5px}
 <!-- SEÇÃO 06 -->
 <section class="fundo-cinza" id="destaques">
   <div class="wrap">
-    <div class="cab">
+    <div class="cab centro">
       <span class="selo">Produtos em destaque</span>
       <h2 class="h2">Veja alguns produtos que podem ser fabricados para o seu projeto</h2>
     </div>
-    <div class="gal">
-      <figure><img src="img/pia.jpg" alt="Pia" loading="lazy"><figcaption>Pia</figcaption></figure>
-      <figure><img src="img/g-bancada.jpg" alt="Bancada" loading="lazy"><figcaption>Bancada</figcaption></figure>
-      <figure><img src="img/g-coifa2.jpg" alt="Coifa" loading="lazy"><figcaption>Coifa</figcaption></figure>
-      <figure><img src="img/g-fogao.jpg" alt="Fogão" loading="lazy"><figcaption>Fogão</figcaption></figure>
-      <figure><img src="img/ilha.jpg" alt="Ilha de montagem" loading="lazy"><figcaption>Ilha de montagem</figcaption></figure>
-      <figure><img src="img/bancada-cuba.jpg" alt="Bancada com cuba" loading="lazy"><figcaption>Bancada com cuba</figcaption></figure>
-      <figure><img src="img/carrinho.jpg" alt="Carrinho esqueleto" loading="lazy"><figcaption>Carrinho esqueleto</figcaption></figure>
-      <figure><img src="img/corrimao.jpg" alt="Corrimão" loading="lazy"><figcaption>Corrimão</figcaption></figure>
-      <figure><img src="img/guarda-corpo.jpg" alt="Guarda-corpo" loading="lazy"><figcaption>Guarda-corpo</figcaption></figure>
-      <figure><img src="img/mesa.jpg" alt="Mesa" loading="lazy"><figcaption>Mesa</figcaption></figure>
-      <figure><img src="img/balcao.jpg" alt="Balcão refrigerado" loading="lazy"><figcaption>Balcão refrigerado</figcaption></figure>
-      <figure><img src="img/cuba.jpg" alt="Cuba industrial reforçada em inox" loading="lazy"><figcaption>Cuba industrial reforçada em inox</figcaption></figure>
-      <figure class="vazio"><div class="sem-foto">[FOTO: pista quente]</div><figcaption>Pista quente</figcaption></figure>
+    <div class="gv">
+      <div class="gv-palco">
+        <figure class="gv-slide on"><img src="img/pia.jpg" alt="Pia" loading="lazy"><figcaption>Pia</figcaption></figure>
+        <figure class="gv-slide"><img src="img/g-bancada.jpg" alt="Bancada" loading="lazy"><figcaption>Bancada</figcaption></figure>
+        <figure class="gv-slide"><img src="img/g-coifa2.jpg" alt="Coifa" loading="lazy"><figcaption>Coifa</figcaption></figure>
+        <figure class="gv-slide"><img src="img/g-fogao.jpg" alt="Fogão" loading="lazy"><figcaption>Fogão</figcaption></figure>
+        <figure class="gv-slide"><img src="img/ilha.jpg" alt="Ilha de montagem" loading="lazy"><figcaption>Ilha de montagem</figcaption></figure>
+        <figure class="gv-slide"><img src="img/bancada-cuba.jpg" alt="Bancada com cuba" loading="lazy"><figcaption>Bancada com cuba</figcaption></figure>
+        <figure class="gv-slide"><img src="img/carrinho.jpg" alt="Carrinho esqueleto" loading="lazy"><figcaption>Carrinho esqueleto</figcaption></figure>
+        <figure class="gv-slide"><img src="img/corrimao.jpg" alt="Corrimão" loading="lazy"><figcaption>Corrimão</figcaption></figure>
+        <figure class="gv-slide"><img src="img/guarda-corpo.jpg" alt="Guarda-corpo" loading="lazy"><figcaption>Guarda-corpo</figcaption></figure>
+        <figure class="gv-slide"><img src="img/mesa.jpg" alt="Mesa" loading="lazy"><figcaption>Mesa</figcaption></figure>
+        <figure class="gv-slide"><img src="img/balcao.jpg" alt="Balcão refrigerado" loading="lazy"><figcaption>Balcão refrigerado</figcaption></figure>
+        <figure class="gv-slide"><img src="img/cuba.jpg" alt="Cuba industrial reforçada em inox" loading="lazy"><figcaption>Cuba industrial reforçada em inox</figcaption></figure>
+        <figure class="gv-slide"><div class="sem-foto">[FOTO: pista quente]</div><figcaption>Pista quente</figcaption></figure>
+        <button class="gv-seta" id="gvAnt" type="button" aria-label="Produto anterior">‹</button>
+        <button class="gv-seta" id="gvProx" type="button" aria-label="Próximo produto">›</button>
+      </div>
+      <div class="gv-minis" id="gvMinis">
+        <button type="button" class="gv-mini on" aria-label="Pia"><img src="img/pia.jpg" alt="" loading="lazy"></button>
+        <button type="button" class="gv-mini" aria-label="Bancada"><img src="img/g-bancada.jpg" alt="" loading="lazy"></button>
+        <button type="button" class="gv-mini" aria-label="Coifa"><img src="img/g-coifa2.jpg" alt="" loading="lazy"></button>
+        <button type="button" class="gv-mini" aria-label="Fogão"><img src="img/g-fogao.jpg" alt="" loading="lazy"></button>
+        <button type="button" class="gv-mini" aria-label="Ilha de montagem"><img src="img/ilha.jpg" alt="" loading="lazy"></button>
+        <button type="button" class="gv-mini" aria-label="Bancada com cuba"><img src="img/bancada-cuba.jpg" alt="" loading="lazy"></button>
+        <button type="button" class="gv-mini" aria-label="Carrinho esqueleto"><img src="img/carrinho.jpg" alt="" loading="lazy"></button>
+        <button type="button" class="gv-mini" aria-label="Corrimão"><img src="img/corrimao.jpg" alt="" loading="lazy"></button>
+        <button type="button" class="gv-mini" aria-label="Guarda-corpo"><img src="img/guarda-corpo.jpg" alt="" loading="lazy"></button>
+        <button type="button" class="gv-mini" aria-label="Mesa"><img src="img/mesa.jpg" alt="" loading="lazy"></button>
+        <button type="button" class="gv-mini" aria-label="Balcão refrigerado"><img src="img/balcao.jpg" alt="" loading="lazy"></button>
+        <button type="button" class="gv-mini" aria-label="Cuba industrial reforçada em inox"><img src="img/cuba.jpg" alt="" loading="lazy"></button>
+        <button type="button" class="gv-mini" aria-label="Pista quente"><div class="sem-foto">[FOTO: pista quente]</div></button>
+      </div>
     </div>
-    <div class="cta"><a class="btn js-zap" href="#"><svg><use href="#zap"/></svg>Pedir cotação</a></div>
+    <div class="cta centro"><a class="btn js-zap" href="#"><svg><use href="#zap"/></svg>Pedir cotação</a></div>
   </div>
 </section>
 
@@ -541,29 +583,15 @@ footer{background:#071D33;color:#9FB0C2;padding:40px 0;font-size:14.5px}
         <button class="gr-seta" id="grProx" type="button" aria-label="Próxima avaliação">›</button>
       </div>
     </div>
-
-    <div class="bloco">
-      <h3 class="sub"><svg viewBox="0 0 24 24" style="color:var(--zap)" aria-hidden="true"><use href="#zap"/></svg>Depoimentos pelo WhatsApp</h3>
-      <!-- [CONTEÚDO] trocar cada .corpo pelo print original do WhatsApp (3 a 4 prints) -->
-      <div class="zaps">
-        <div class="fone"><div class="tela"><div class="barra">Cliente Multiforme</div><div class="corpo">[DEPOIMENTO 01 | print original de WhatsApp]</div></div></div>
-        <div class="fone"><div class="tela"><div class="barra">Cliente Multiforme</div><div class="corpo">[DEPOIMENTO 02 | print original de WhatsApp]</div></div></div>
-        <div class="fone"><div class="tela"><div class="barra">Cliente Multiforme</div><div class="corpo">[DEPOIMENTO 03 | print original de WhatsApp]</div></div></div>
-      </div>
-    </div>
-
   </div>
 </section>
 
 <!-- DESDE 2019 (seção própria) -->
 <section class="fundo-cinza" id="desde-2019">
   <div class="wrap desde">
-    <div class="ano" aria-hidden="true">2019</div>
-    <div>
-      <h2 class="h2">Desde 2019 trabalhando com inox</h2>
-      <p class="lead">A Multiforme desenvolve e comercializa produtos em aço inox para diferentes tipos de projeto desde 2019.</p>
-      <div class="cta"><a class="btn js-zap" href="#"><svg><use href="#zap"/></svg>Falar com a Multiforme</a></div>
-    </div>
+    <h2 class="h2">Desde 2019 trabalhando com inox</h2>
+    <p class="lead">A Multiforme desenvolve e comercializa produtos em aço inox para diferentes tipos de projeto desde 2019.</p>
+    <div class="cta"><a class="btn js-zap" href="#"><svg><use href="#zap"/></svg>Falar com a Multiforme</a></div>
   </div>
 </section>
 
@@ -643,6 +671,21 @@ document.querySelectorAll('.js-zap').forEach(function (a) {
       });
     });
   });
+})();
+
+// Galeria: imagem grande + miniaturas
+(function () {
+  var slides = document.querySelectorAll('.gv-slide'), minis = document.querySelectorAll('.gv-mini'), i = 0;
+  function ir(n) {
+    i = (n + slides.length) % slides.length;
+    slides.forEach(function (x, k) { x.classList.toggle('on', k === i); });
+    minis.forEach(function (x, k) { x.classList.toggle('on', k === i); });
+    var m = minis[i], c = document.getElementById('gvMinis');
+    c.scrollTo({ left: m.offsetLeft - (c.clientWidth - m.offsetWidth) / 2, behavior: 'smooth' });
+  }
+  minis.forEach(function (m, k) { m.addEventListener('click', function () { ir(k); }); });
+  document.getElementById('gvAnt').onclick = function () { ir(i - 1); };
+  document.getElementById('gvProx').onclick = function () { ir(i + 1); };
 })();
 
 // Carrossel de avaliações do Google
